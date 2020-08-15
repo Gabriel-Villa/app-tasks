@@ -11,16 +11,43 @@
   </head>
 <body>
   <%- include('../partials/nav'); -%>
-  <section class="container-form ">
-    <h4>< SING  UP /></h4>
-    <p>Register to start using the app</p>
-    <form action="" method="post">
-        <input type="text" name="username" id="" placeholder="Username:">
-        <input type="email" name="email" id="" placeholder="Email:">
-        <input type="password" name="password" placeholder="Password:">
-        <input type="password" name="confirm-password" placeholder="Repeat Password:">
-        <input type="submit" value="SING UP"></button>
-    </form>
-</section> 
+  <% if( typeof(errors) =="undefined")  { %>
+    <section class="container-form ">
+      <h4>< SING  UP /></h4>
+      <p>Register to start using the app</p>
+      <form action="/register" method="post">
+          <input type="text" name="username" id="" required maxlength="20" placeholder="Username:" ">
+          <input type="email" name="email" id="" required placeholder="Email:">
+          <input type="password" name="password" required minlength="4" maxlength="20" placeholder="Password:">
+          <input type="password" name="confirm_password" minlength="4" maxlength="10" required placeholder="Repeat Password:">
+          <input type="submit" value="SING UP"></button>
+      </form>
+   </section>
+  <% }else {  %>
+    <% errors.forEach((error) => { %>
+      <p class="flash-message"><%= error.text %></p>
+      <section class="container-form ">
+        <h4>< SING  UP /></h4>
+        <p>Register to start using the app</p>
+        <form action="/register" method="post">
+            <input type="text" name="username" id="" required maxlength="20" placeholder="Username:">
+            <input type="email" name="email" id="" required placeholder="Email:">
+            <input type="password" name="password" required minlength="4" maxlength="20" placeholder="Password:" >
+            <input type="password" name="confirm_password" minlength="4" maxlength="10" required placeholder="Repeat Password:">
+            <input type="submit" value="SING UP"></button>
+        </form>
+     </section>
+    <% }); %>
+  <%  } %>
+  
+  
+  
+  <script>
+    const $message = document.querySelector('.flash-message');
+    const d = document;
+    $message.addEventListener('click', () => $message.remove());
+  
+</script>
+
 </body>
 </html>

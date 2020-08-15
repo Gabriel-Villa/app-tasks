@@ -4,7 +4,10 @@ const morgan = require('morgan');
 const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const passport = require('passport');
+
 const app = express();
+require('./config/passport');
 
 //Settings
 app.set('port', process.env.PORT || 3000);
@@ -22,11 +25,14 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(flash());
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Global
 app.use((req,res,next) => {
     res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
     next();
 });
 

@@ -171,21 +171,7 @@ section.container-form input[type="submit"]:hover {
   background-color: rgb(32, 201, 139);
   color: white;
 }
-/*
-.message-error {
-  background: #cb356b; 
-  background: -webkit-linear-gradient(
-    to right,
-    #b20a0a,
-    #c12424
-  ); 
-  background: linear-gradient(
-    to right,
-    #b20a0a,
-    #c12424
-  ); 
-}
-*/
+
 
 /*Container Tasks*/
 section.container-tasks {

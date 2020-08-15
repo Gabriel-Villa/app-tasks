@@ -3,6 +3,7 @@
     <li><a href="/">MY APP</a></li>
   </ul>
   <ul class="ul-right">
+    <% if (user) { %>
     <li>
       <a href="/notes"
         >Notes <i class="fa fa-angle-down" aria-hidden="true"></i
@@ -19,6 +20,7 @@
         </li>
       </ul>
     </li>
+    <% } else{ %>
     <li>
       <a href="/login"
         ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a
@@ -29,5 +31,13 @@
         ><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a
       >
     </li>
+    <% } %>
   </ul>
 </nav>
+
+
+
+
+
+
+    

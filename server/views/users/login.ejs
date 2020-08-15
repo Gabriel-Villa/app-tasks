@@ -14,11 +14,18 @@
    <section class="container-form">
         <h4>< LOG IN /></h4>
         <p>Login and discover the app</p>
-        <form action="" method="post">
+        <form action="/login" method="post">
             <input type="email" name="email" id="" placeholder="Email:">
             <input type="password" name="password" placeholder="Password:">
             <input type="submit" value="LOG IN"></button>
         </form>
-    </section>  
+    </section> 
+    
+    <script>
+      const $message = document.querySelector('.flash-message');
+      const d = document;
+      $message.addEventListener('click', () => $message.remove());
+    
+ </script>
 </body>
 </html>
