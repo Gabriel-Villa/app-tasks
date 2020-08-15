@@ -2,6 +2,7 @@ const usersController = {}
 const User = require('../models/User');
 const passport = require('passport');
 
+
 usersController.loginPage =(req,res) => {
     res.render('users/login');
 }
