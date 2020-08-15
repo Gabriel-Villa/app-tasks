@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" type="text/css" href="app.css" />
+    <title>My App</title>
+  </head>
+  <body>
+    
+    <%- include('../partials/nav'); -%> 
+    <%- include('../partials/messages'); -%>
+    <% if (notes) { %>
+    <section class="container-tasks">
+      <% notes.forEach((note) => { %>
+      <div class="task">
+        <div class="task-header">
+          <h4 class="task-title"><%= note.title %></h4>
+          <a href="/notes/update/<%= note._id %>"
+            ><i class="fa fa-pencil" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="task-body">
+          <p>
+            <%= note.description %>
+          </p>
+        </div>
+        <br />
+        <hr />
+        <p class="status">Status</p>
+        <button class="task-priority"><%= note.priority %></button>
+        <br />
+        <form
+          action="/notes/delete/<%= note._id %>?_method=DELETE"
+          method="post"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="DELETE" />
+        </form>
+      </div>
+      <% }); %>
+    </section>
+    <% } else{ %>
+    <div class="nothing">
+      <h4 class="">No tasks here ! , Create one</h4>
+      <a href="/notes/add">CREATE ONE</a>
+    </div>
+    <% } %>
+
+    <script>
+      const $message = document.querySelector('.flash-message');
+      const d = document;
+      $message.addEventListener('click', () => $message.remove());
+    
+ </script>
+  </body>
+</html>

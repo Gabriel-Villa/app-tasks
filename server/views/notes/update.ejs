@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" type="text/css" href="../../app.css">
+    <title>My App</title>
+  </head>
+<body>
+  <%- include('../partials/nav'); -%>
+  
+
+  <section class="container-form ">
+    <h4>< UPDATE A TASK /></h4>
+    <form action="/notes/update/<%= note._id%>?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="title" id="" value="<%= note.title %>" required maxlength="40" placeholder="Title:">
+        <input type="text" name="description" value="<%= note.description %>" id="" required maxlength="200" placeholder="Description:">
+        <select name="priority" id="">
+            <option selected value="<%= note.priority %>"><%= note.priority %></option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="IMPORTANT">IMPORTANT</option>
+        </select>
+        <input type="submit" value="LOG IN"></button>
+    </form>
+</section>  
+
+</body>
+</html>
