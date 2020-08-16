@@ -1,31 +1,56 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- MAIN CSS -->
-    <link rel="stylesheet" type="text/css" href="../app.css">
+    <link rel="stylesheet" type="text/css" href="../app.css" />
     <title>My App</title>
   </head>
-<body>
-  <%- include('../partials/nav'); -%>
+  <body>
+    <%- include('../partials/nav'); -%> <%- include('../partials/messages'); -%>
+    <% if (notes) { %>
     <section class="container-tasks">
-    <div class="task">
+      <% notes.forEach((note) => { %>
+      <div class="task">
         <div class="task-header">
-            <h4 class="task-title">TITLE</h4>
-            <i class="fa fa-check" aria-hidden="true"></i>
+          <h4 class="task-title"><%= note.title %></h4>
         </div>
         <br />
         <hr />
         <p class="status">Status</p>
-        <button class="task-priority">FINISHED</button>
-        <br />
-        <input type="submit" value="REACTIVATE" />
-        <input type="submit" value="DELETE" />
-    </div>
-</section>
+        <button class="task-priority"><%= note.priority %></button>
+        <br /><br /><br />
 
-</body> 
+        <form
+          action="/notes/reactivate/<%= note._id %>?_method=PUT"
+          method="post"
+        >
+          <input type="hidden" name="_method" value="PUT" />
+          <input type="submit" value="REACTIVATE" />
+        </form>
+
+        <form
+          action="/notes/delete/<%= note._id %>?_method=DELETE"
+          method="post"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="DELETE" />
+        </form>
+      </div>
+      <% }); %>
+    </section>
+    <% } %>
+
+    <script>
+      const $message = document.querySelector(".flash-message");
+      const d = document;
+      $message.addEventListener("click", () => $message.remove());
+    </script>
+  </body>
 </html>

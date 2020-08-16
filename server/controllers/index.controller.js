@@ -1,8 +1,7 @@
-const indexController = {}
+const indexController = {};
 
-indexController.indexPage = (req,res) => {
-    res.render('index');
-} 
-
+indexController.indexPage = (req, res) => {
+  res.render("index");
+};
 
 module.exports = indexController;

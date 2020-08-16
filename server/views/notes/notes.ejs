@@ -13,9 +13,7 @@
     <title>My App</title>
   </head>
   <body>
-    
-    <%- include('../partials/nav'); -%> 
-    <%- include('../partials/messages'); -%>
+    <%- include('../partials/nav'); -%> <%- include('../partials/messages'); -%>
     <% if (notes) { %>
     <section class="container-tasks">
       <% notes.forEach((note) => { %>
@@ -37,11 +35,11 @@
         <button class="task-priority"><%= note.priority %></button>
         <br />
         <form
-          action="/notes/delete/<%= note._id %>?_method=DELETE"
+          action="/notes/completed/<%= note._id %>?_method=PUT"
           method="post"
         >
-          <input type="hidden" name="_method" value="DELETE" />
-          <input type="submit" value="DELETE" />
+          <input type="hidden" name="_method" value="PUT" />
+          <input type="submit" value="FINISH" />
         </form>
       </div>
       <% }); %>
@@ -54,10 +52,9 @@
     <% } %>
 
     <script>
-      const $message = document.querySelector('.flash-message');
+      const $message = document.querySelector(".flash-message");
       const d = document;
-      $message.addEventListener('click', () => $message.remove());
-    
- </script>
+      $message.addEventListener("click", () => $message.remove());
+    </script>
   </body>
 </html>

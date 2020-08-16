@@ -258,12 +258,10 @@ section.container-tasks .task input[type="submit"] {
   width: 100%;
 }
 section.container-tasks .task input[type="submit"]:hover {
-  background: #ed213a;
-  background: -webkit-linear-gradient(to right, #a41515, #660000);
-  background: linear-gradient(to right, #a41515, #660000);
-  color: var(--white-color);
   transition: 0.2s ease-out;
   font-weight: 800;
+  color: var(--white-color);
+    background: var(--black-color);
 }
 
 /*Nothing*/
@@ -301,6 +299,30 @@ div.nothing a:hover {
   font-weight: 800;
 }
 
+/*History reactivate button*/
+a.reactivate-task{
+  color: var(--black-color);
+    background: var(--white-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    transition: 0.3s ease;
+    font-weight: 800;
+    padding: 10px 40px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: var(--open-sans);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+a.reactivate-task:hover{
+  color: var(--white-color);
+  background: var(--black-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  font-weight: 800;
+}
 /*Media query*/
 @media only screen and (max-width: 1000px) {
   section.container-tasks {
